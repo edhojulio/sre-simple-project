@@ -8,6 +8,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: /home/runner/work/sre-simple-project/sre-simple-project
 
     steps:
     - name: Checkout Repository
@@ -19,11 +22,8 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
 
-    - name: Print working directory
-      run: |
-        pwd
-
     - name: Build and Push Docker Image
       run: |
         docker build -t edhojulio/hello-go:latest .
         docker push edhojulio/hello-go:latest
+      working-directory: hello-go/
