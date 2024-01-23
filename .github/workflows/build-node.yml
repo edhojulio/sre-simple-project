@@ -25,5 +25,5 @@ jobs:
     - name: Build and Push Docker Image
       run: |
         docker build -t edhojulio/hello-node:latest .
-        docker push edhojulio/hellon-node:latest
+        docker push edhojulio/hello-node:latest
       working-directory: hello-node/
